@@ -1,4 +1,4 @@
-using MeddlingIdiot.Velopack;
+using Automation.Velopack;
 using Avalonia;
 using Velopack;
 
