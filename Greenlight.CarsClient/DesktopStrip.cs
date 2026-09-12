@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>A rectangle in physical screen pixels.</summary>
 public readonly record struct StripBounds(int X, int Y, int Width, int Height)

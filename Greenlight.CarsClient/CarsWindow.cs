@@ -5,7 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Threading;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>
 /// The road: a transparent, always-on-top, click-through strip laid over the taskbar, with

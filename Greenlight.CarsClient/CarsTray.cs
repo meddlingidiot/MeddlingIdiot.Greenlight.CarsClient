@@ -3,7 +3,7 @@ using System.Runtime.Versioning;
 using Avalonia.Controls;
 using Avalonia.Platform;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>
 /// The mascot in the notification area, and the menu hanging off him: the only part of this
@@ -26,7 +26,7 @@ namespace Greenlight.SampleClient;
 [SupportedOSPlatform("windows")]
 public sealed class CarsTray : IDisposable
 {
-    private static readonly Uri IconUri = new("avares://Greenlight.SampleClient/Assets/MeddlingIdiot.ico");
+    private static readonly Uri IconUri = new("avares://Greenlight.CarsClient/Assets/MeddlingIdiot.ico");
 
     private readonly CarsConfig _config;
     private readonly TrayIcon _tray;

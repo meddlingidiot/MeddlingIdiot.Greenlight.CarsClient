@@ -15,8 +15,8 @@ public class Build : GitHubActionsBuild, IShowVersion, IClean, ICompile, IRestor
     public static int Main() => Execute<Build>(
         y => ((IVelopack)y).ReleaseVelopack);
 
-    string IHasVelopack.VelopackProjectName => "Greenlight.SampleClient";
-    string IHasVelopack.VelopackIconPath => @"Greenlight.SampleClient\Assets\MeddlingIdiot.ico";
+    string IHasVelopack.VelopackProjectName => "Greenlight.CarsClient";
+    string IHasVelopack.VelopackIconPath => @"Greenlight.CarsClient\Assets\MeddlingIdiot.ico";
 
     // Automation.Fallout.Components defaults these to AFTR's staftrinstallers, which this project has
     // no access to. Every MeddlingIdiot installer lives in meddlingidiotinstallers; the Nuke-era

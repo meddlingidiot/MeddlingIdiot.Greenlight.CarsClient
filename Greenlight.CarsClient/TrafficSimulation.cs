@@ -1,4 +1,4 @@
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>What the traffic is doing, which is Greenlight's aggregate colour by another name.</summary>
 public enum LightState

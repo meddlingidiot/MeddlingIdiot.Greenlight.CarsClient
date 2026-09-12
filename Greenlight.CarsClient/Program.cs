@@ -1,8 +1,8 @@
-using Automation.Velopack;
+using MeddlingIdiot.Velopack;
 using Avalonia;
 using Velopack;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 internal static class Program
 {
@@ -15,7 +15,7 @@ internal static class Program
         // altogether. VelopackBootstrapper says as much itself, and it is the other half of
         // the reason this lives in Main: `args` is simply here.
         VelopackApp.Build().Run();
-        VelopackBootstrapper.Startup("Greenlight.SampleClient", args);
+        VelopackBootstrapper.Startup("Greenlight.CarsClient", args);
 
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
     }

@@ -1,6 +1,6 @@
-using Greenlight.SampleClient;
+using Greenlight.CarsClient;
 
-namespace Greenlight.SampleClient.UnitTests;
+namespace Greenlight.CarsClient.UnitTests;
 
 /// <summary>
 /// The traffic in the SDK sample. Worth testing despite being a desk toy: the jam is the

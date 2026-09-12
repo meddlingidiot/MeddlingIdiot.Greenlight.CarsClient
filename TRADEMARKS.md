@@ -4,7 +4,7 @@ The code in this repository is MIT licensed. The MIT licence covers copyright, a
 nothing either way about names and logos — so, to be explicit:
 
 **"MeddlingIdiot", "Greenlight", and the MeddlingIdiot mascot** (including
-`Greenlight.SampleClient/Assets/MeddlingIdiot.ico`) are trademarks of MeddlingIdiot, and are
+`Greenlight.CarsClient/Assets/MeddlingIdiot.ico`) are trademarks of MeddlingIdiot, and are
 **not** licensed by the MIT grant.
 
 In practice this only means the ordinary thing: take the code, keep the code, ship the code —

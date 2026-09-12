@@ -20,7 +20,7 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Greenlight.SampleClient</RootNamespace>
+    <RootNamespace>Greenlight.CarsClient</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets\MeddlingIdiot.ico</ApplicationIcon>
     <!-- Not a package. Fallout's Package target packs the whole solution. -->
@@ -33,18 +33,10 @@
     <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.1" />
   </ItemGroup>
 
-  <!-- The SDK, the same way your own app would take it. -->
+  <!-- The SDK and the updater, the same way your own app would take them. -->
   <ItemGroup>
     <PackageReference Include="MeddlingIdiot.Greenlight.Sdk" Version="1.1.0" />
-  </ItemGroup>
-
-  <!--
-    The updater, still carried in this repository: MeddlingIdiot.Velopack is not on nuget.org
-    yet, and a sample that only restores for the person who wrote it is not a sample. Becomes
-    a PackageReference the moment that package exists.
-  -->
-  <ItemGroup>
-    <ProjectReference Include="..\Automation.Velopack\Automation.Velopack.csproj" />
+    <PackageReference Include="MeddlingIdiot.Velopack" Version="1.1.0" />
   </ItemGroup>
 
   <!-- The mascot, for the tray icon and the executable. Same icon the other apps use. -->

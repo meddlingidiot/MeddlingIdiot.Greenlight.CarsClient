@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>
 /// The cars, read from a JSON file the user can edit. Written out with the defaults the
@@ -22,6 +22,11 @@ public sealed class CarsConfig
         Converters = { new JsonStringEnumConverter() },
     };
 
+    /// <remarks>
+    /// Still <c>Greenlight.SampleCars</c> after the project was renamed, deliberately: this
+    /// is somebody's file, with their colours in it, and renaming the folder would silently
+    /// hand them the defaults back and orphan what they had written.
+    /// </remarks>
     public static string DefaultPath { get; } = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "Greenlight.SampleCars", "cars.json");

@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>
 /// Makes the window furniture rather than an application: the mouse falls straight through

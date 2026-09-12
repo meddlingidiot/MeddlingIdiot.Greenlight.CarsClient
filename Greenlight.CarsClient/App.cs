@@ -7,7 +7,7 @@ using Avalonia.Threading;
 using Greenlight.Sdk;
 using Greenlight.Sdk.Protocol;
 
-namespace Greenlight.SampleClient;
+namespace Greenlight.CarsClient;
 
 /// <summary>
 /// The whole of the Greenlight integration, which is the point of the sample: attach,

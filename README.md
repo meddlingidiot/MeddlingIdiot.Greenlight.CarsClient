@@ -13,12 +13,12 @@ four-minute-old snapshot would be lying to you.
 The point of it is what it does **not** have. No Azure DevOps client, no GitHub client, no
 token, no polling loop — everything it knows arrives through the SDK, from the Greenlight
 already running on the machine. Strip out the drawing and the tray icon and the integration
-is about twenty lines, all of them in [`App.cs`](Greenlight.SampleClient/App.cs).
+is about twenty lines, all of them in [`App.cs`](Greenlight.CarsClient/App.cs).
 
 ## Running it
 
 ```bash
-dotnet run --project Greenlight.SampleClient
+dotnet run --project Greenlight.CarsClient
 ```
 
 Windows only: the click-through strip and the taskbar-finding are Win32. The SDK itself is
