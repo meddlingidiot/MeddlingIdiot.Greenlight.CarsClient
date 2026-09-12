@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    A reference consumer of MeddlingIdiot.Greenlight.Sdk: little cars that drive along your
+    taskbar and pile up at a red light when a pipeline breaks.
+
+    The point of it is what it does NOT have. No Azure DevOps client, no GitHub client, no
+    token, no polling loop — it reads everything from the Greenlight already running on the
+    machine, through the package. Everything here is either Avalonia drawing, the tray icon
+    that turns it on and off, or the twenty-odd lines that talk to the SDK.
+
+    It references the SDK as a package, which is all an app of your own has to do:
+      dotnet add package MeddlingIdiot.Greenlight.Sdk
+
+    net10.0-windows because the click-through and taskbar-finding bits are Win32. The SDK
+    itself is plain net8.0/net10.0.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Greenlight.SampleClient</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\MeddlingIdiot.ico</ApplicationIcon>
+    <!-- Not a package. Fallout's Package target packs the whole solution. -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.1.1" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.1.1" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.1" />
+  </ItemGroup>
+
+  <!-- The SDK, the same way your own app would take it. -->
+  <ItemGroup>
+    <PackageReference Include="MeddlingIdiot.Greenlight.Sdk" Version="1.1.0" />
+  </ItemGroup>
+
+  <!--
+    The updater, still carried in this repository: MeddlingIdiot.Velopack is not on nuget.org
+    yet, and a sample that only restores for the person who wrote it is not a sample. Becomes
+    a PackageReference the moment that package exists.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\Automation.Velopack\Automation.Velopack.csproj" />
+  </ItemGroup>
+
+  <!-- The mascot, for the tray icon and the executable. Same icon the other apps use. -->
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+</Project>
