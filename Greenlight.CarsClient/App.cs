@@ -46,6 +46,12 @@ public sealed class App : Application
 
             _config = CarsConfig.Load();
 
+            // If Windows is set to start this, make sure it is still pointed at the right
+            // executable. An update moves the versioned copy out from under an older
+            // registration, and the symptom is the cars silently not coming back one morning —
+            // weeks after anybody touched the setting.
+            WindowsStartup.Refresh();
+
             _tray = new CarsTray(_config)
             {
                 IsRunning = () => _window is not null,

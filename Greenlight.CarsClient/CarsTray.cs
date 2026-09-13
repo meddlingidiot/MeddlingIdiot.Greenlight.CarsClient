@@ -32,6 +32,7 @@ public sealed class CarsTray : IDisposable
     private readonly TrayIcon _tray;
     private readonly NativeMenuItem _status;
     private readonly NativeMenuItem _running;
+    private readonly NativeMenuItem _startup;
 
     public CarsTray(CarsConfig config)
     {
@@ -46,11 +47,22 @@ public sealed class CarsTray : IDisposable
         };
         _running.Click += (_, _) => SetRunning(!IsRunning?.Invoke() ?? true);
 
+        // Read from the registry rather than from a setting of ours, every time it is shown: the
+        // user can turn this off in Task Manager's Startup tab, and a tick remembering what we
+        // last wrote would then be telling them the opposite of the truth.
+        _startup = Check("Start with Windows", WindowsStartup.IsEnabled, value => WindowsStartup.Set(value));
+
+        var menu = BuildMenu();
+
+        // The submenus re-tick their own items when they open. This one is top-level, and it is
+        // the only top-level item that can change behind our back — so this is the moment to notice.
+        menu.Opening += (_, _) => _startup.IsChecked = WindowsStartup.IsEnabled();
+
         _tray = new TrayIcon
         {
             Icon = new WindowIcon(AssetLoader.Open(IconUri)),
             ToolTipText = "Greenlight cars",
-            Menu = BuildMenu(),
+            Menu = menu,
             IsVisible = true,
         };
 
@@ -150,6 +162,7 @@ public sealed class CarsTray : IDisposable
         new NativeMenuItemSeparator(),
         Item("Edit the cars…", EditConfig),
         Item("Reload the file", () => OnReloadConfig?.Invoke()),
+        _startup,
         new NativeMenuItemSeparator(),
         Item("Quit", () => OnQuit?.Invoke()),
     ];
@@ -158,6 +171,24 @@ public sealed class CarsTray : IDisposable
     // Each option asks the config what it should look like when the menu opens rather than
     // being ticked once at startup: the file is editable by hand and reloadable from this
     // very menu, so anything remembering its own state would start lying the moment it was.
+
+    private static NativeMenuItem Check(string header, Func<bool> isOn, Action<bool> set)
+    {
+        var item = new NativeMenuItem
+        {
+            Header = header,
+            ToggleType = MenuItemToggleType.CheckBox,
+            IsChecked = isOn(),
+        };
+
+        item.Click += (_, _) =>
+        {
+            set(!isOn());
+            item.IsChecked = isOn();
+        };
+
+        return item;
+    }
 
     private static NativeMenuItem Item(string header, Action click)
     {
