@@ -65,19 +65,6 @@ jobs:
           global-json-file: global.json
 
       # ----------------------------------------------------------------
-      # Setup: Install the workloads the solution needs
-      # ----------------------------------------------------------------
-      # Fallout's Clean and Compile targets walk the whole solution, so a head whose
-      # workload is missing (android, ios, wasm-tools) fails with NETSDK1147 before
-      # anything compiles. setup-dotnet installs an SDK but never its workloads, and
-      # workloads are per-feature-band — so a solution that builds on one SDK band can
-      # fail on the next one purely because the runner has no manifests for it.
-      # No argument: this restores whatever the solution in the working directory needs.
-      - name: Restore .NET workloads
-        run: dotnet workload restore
-        shell: pwsh
-
-      # ----------------------------------------------------------------
       # Setup: Authenticate to GitHub Packages
       #           dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GH_PACKAGES_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" || echo "Package source already exists or failed to add, continuing..."
       # ----------------------------------------------------------------
